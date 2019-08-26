@@ -1,0 +1,66 @@
+{
+  "name": "aws-promise-jest-mock",
+  "version": "1.0.0",
+  "description": "simple libraray for jest-tested projects to create jest mock for js aws-sdk  .promise() calls",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --build tsconfig.prod.json",
+    "build:watch": "tsc -w",
+    "clean": "rm -rf tmp/* dist/*",
+    "coveralls": "cat ./tmp/coverage/lcov.info | coveralls",
+    "lint": "eslint src/**/*.ts",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jurijzahn8019/aws-promise-jest-mock.git"
+  },
+  "keywords": [
+    "aws",
+    "jest",
+    "mock",
+    "aws-sdk",
+    "promise"
+  ],
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "lint": "eslint src/**/*.ts"
+    }
+  },
+  "author": "Jurij Zahn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jurijzahn8019/aws-promise-jest-mock/issues"
+  },
+  "homepage": "https://github.com/jurijzahn8019/aws-promise-jest-mock#readme",
+  "peerDependencies": {
+    "aws-sdk": "^2.x.x",
+    "jest": "^24.x.x"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.1.0",
+    "@types/jest": "^24.0.18",
+    "@types/node": "^12.7.2",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "aws-sdk": "^2.517.0",
+    "coveralls": "^3.0.6",
+    "eslint": "^6.2.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-import-resolver-typescript": "^1.1.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.15.2",
+    "eslint-plugin-prettier": "^3.1.0",
+    "git-branch": "^2.0.1",
+    "husky": "^3.0.4",
+    "jest": "^24.9.0",
+    "jest-junit": "^7.0.0",
+    "prettier": "^1.18.2",
+    "standard-version": "^7.0.0",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
+  }
+}

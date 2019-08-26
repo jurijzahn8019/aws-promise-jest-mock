@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`aws-mock Should create reject mock from instance: Result 1`] = `[Error: baz-BAR]`;
+
+exports[`aws-mock Should create reject mock from instance: secretsmanager.getSecretValue (reject mock 3b67f997b83b065e32ad7fb2b0a969e8d1dd7a2b) 1`] = `
+Array [
+  Object {
+    "SecretId": "bar-baz",
+  },
+]
+`;
+
+exports[`aws-mock Should create reject mock from type: Result 1`] = `[Error: foo-baz]`;
+
+exports[`aws-mock Should create reject mock from type: secretsmanager.getSecretValue (reject mock 3b67f997b83b065e32ad7fb2b0a969e8d1dd7a2b) 1`] = `
+Array [
+  Object {
+    "SecretId": "bar-baz",
+  },
+]
+`;
+
+exports[`aws-mock Should create resolve mock from instance: Result 1`] = `
+Object {
+  "SecretString": "foo-bar",
+}
+`;
+
+exports[`aws-mock Should create resolve mock from instance: secretsmanager.getSecretValue (resolve mock 3b67f997b83b065e32ad7fb2b0a969e8d1dd7a2b) 1`] = `
+Array [
+  Object {
+    "SecretId": "bar-baz",
+  },
+]
+`;
+
+exports[`aws-mock Should create resolve mock from type: Result 1`] = `
+Object {
+  "SecretString": "foo-bar",
+}
+`;
+
+exports[`aws-mock Should create resolve mock from type: secretsmanager.getSecretValue (resolve mock 3b67f997b83b065e32ad7fb2b0a969e8d1dd7a2b) 1`] = `
+Array [
+  Object {
+    "SecretId": "bar-baz",
+  },
+]
+`;
+
+exports[`aws-mock Should invoke result callabck: Result 1`] = `
+Object {
+  "SecretString": "FOO",
+}
+`;
+
+exports[`aws-mock Should not create snapshot: Result 1`] = `
+Object {
+  "SecretString": "foo-bar",
+}
+`;
