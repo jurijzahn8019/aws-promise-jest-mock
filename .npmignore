@@ -1,0 +1,14 @@
+.dependabot/
+.vscode/
+
+__snapshots__/
+__mocks__/
+*.spec.*
+
+.commitlint*
+.eslint*
+.prettier*
+.travis*
+.versionrc*
+jest.config*
+tsconfig*
