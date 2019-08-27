@@ -3,6 +3,7 @@
   "version": "1.1.0",
   "description": "simple libraray for jest-tested projects to create jest mock for js aws-sdk  .promise() calls",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc --build tsconfig.prod.json",
     "build:watch": "tsc -w",
@@ -10,7 +11,7 @@
     "coveralls": "cat ./tmp/coverage/lcov.info | coveralls",
     "lint": "eslint src/**/*.ts",
     "packlocal": "npm run clean && npm run build && npm pack && mkdir -p ./tmp && mv -f aws-promise-jest-mock-*.tgz ./tmp/ && tar xfz ./tmp/aws-promise-jest-mock-*.tgz -C ./tmp",
-    "publish": "npm run clean && npm run build && npm publish",
+    "pub": "npm run clean && npm run build && npm publish",
     "release": "standard-version",
     "test": "jest"
   },

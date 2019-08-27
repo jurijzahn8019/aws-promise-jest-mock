@@ -5,6 +5,7 @@ __snapshots__/
 __mocks__/
 *.spec.*
 
+.DS_Store
 .commitlint*
 .eslint*
 .prettier*
