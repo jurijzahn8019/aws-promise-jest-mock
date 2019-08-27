@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/jurijzahn8019/aws-promise-jest-mock/compare/v1.1.0...v1.1.1) (2019-08-27)
+
+
+### 🐛 Bug Fixes
+
+* **pkg:** add types path to package.json ([86d42c4](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/86d42c4))
+
 ## [1.1.0](https://github.com/jurijzahn8019/aws-promise-jest-mock/compare/v1.0.0...v1.1.0) (2019-08-27)
 
 
