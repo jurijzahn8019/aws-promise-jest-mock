@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`aws-mock Should chain mocks: createSecret 1`] = `
+Object {
+  "Name": "FOO_SECRET",
+}
+`;
+
+exports[`aws-mock Should chain mocks: getSecretValue 1`] = `
+Object {
+  "SecretString": "FOO",
+}
+`;
+
 exports[`aws-mock Should create reject mock from instance: Result 1`] = `[Error: baz-BAR]`;
 
 exports[`aws-mock Should create reject mock from instance: secretsmanager.getSecretValue (reject mock 3b67f997b83b065e32ad7fb2b0a969e8d1dd7a2b) 1`] = `
@@ -30,6 +42,16 @@ exports[`aws-mock Should create resolve mock from instance: secretsmanager.getSe
 Array [
   Object {
     "SecretId": "bar-baz",
+  },
+]
+`;
+
+exports[`aws-mock Should create resolve mock from type: Constructor 1`] = `
+Array [
+  Object {
+    "credentials": Object {
+      "accessKeyId": "rootkeyfoo",
+    },
   },
 ]
 `;

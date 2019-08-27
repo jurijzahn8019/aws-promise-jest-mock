@@ -87,6 +87,23 @@ export class AwsFunctionMockBuilder<
   public func: F;
 
   /**
+   * Instance of the service mock builder which has created this
+   * function mock builder
+   *
+   * @type {AwsServiceMockBuilder<S, any>}
+   * @memberof AwsFunctionMockBuilder
+   */
+  public serviceMockBuilder: AwsServiceMockBuilder<S, any>;
+
+  /**
+   * Used to configure Mock creation
+   *
+   * @type {(CreateMockOptions)}
+   * @memberof AwsFunctionMockBuilder
+   */
+  public options?: CreateMockOptions;
+
+  /**
    * Creates an instance of AwsFunctionMockBuilder.
    * Used by the AWS Mocok Builder Lib
    *
@@ -96,13 +113,15 @@ export class AwsFunctionMockBuilder<
    * @memberof AwsFunctionMockBuilder
    */
   public constructor(
-    service: S,
+    serviceMockBuilder: AwsServiceMockBuilder<S>,
     func: F,
     mock: jest.Mock<Request<Data, Err>, Input>
   ) {
-    this.service = service;
+    this.serviceMockBuilder = serviceMockBuilder;
     this.func = func;
     this.mock = mock;
+    this.service = serviceMockBuilder.instance;
+    this.options = serviceMockBuilder.options;
   }
 
   /**
@@ -124,9 +143,11 @@ export class AwsFunctionMockBuilder<
    * @param {({
    *     result?: Partial<Data> | { (...args: Input): Partial<Data> };
    *     error?: Err;
-   *   })} {
+   *     options?: CreateMockOptions;
+   *   } & CreateMockOptions)} {
    *     result,
-   *     error
+   *     error,
+   *     options
    *   }
    * @returns {{ (...args: Input): Request<Data, Err> }}
    * @memberof AwsFunctionMockBuilder
@@ -134,11 +155,13 @@ export class AwsFunctionMockBuilder<
   private getImpl({
     result,
     error,
-    snapshot
+    options = {}
   }: {
     result?: Partial<Data> | { (...args: Input): Partial<Data> };
     error?: Err;
+    options?: CreateMockOptions;
   } & CreateMockOptions): { (...args: Input): Request<Data, Err> } {
+    const { snapshot = true } = { ...this.options, ...options };
     const res = {
       promise: jest.fn(),
       abort: jest.fn(),
@@ -196,35 +219,48 @@ export class AwsFunctionMockBuilder<
    * Creates resolving mock which returns given result
    *
    * @param {(Partial<Data> | { (...args: Input): Partial<Data> })} result Data to return by the mock
+   * @param {CreateMockOptions} [options] used to override options defined on the builder instance
    * @returns {this}
    * @memberof AwsFunctionMockBuilder
    */
   public resolve(
     result: Partial<Data> | { (...args: Input): Partial<Data> },
-    { snapshot = true }: CreateMockOptions = {}
+    options?: CreateMockOptions
   ): this {
-    this.mock.mockImplementation(this.getImpl({ result, snapshot }));
+    this.mock.mockImplementation(this.getImpl({ result, options }));
     return this;
   }
 
   /**
    * Creates rejecting mock which throws given error
    *
-   * @param {(Err | string)} error error to throw
+   * @param {(Err | Error | string)} error error to throw
+   * @param {CreateMockOptions} [options] used to override options defined on the builder instance
    * @returns {this}
    * @memberof AwsFunctionMockBuilder
    */
   public reject(
     error: Err | Error | string,
-    { snapshot = true }: CreateMockOptions = {}
+    options?: CreateMockOptions
   ): this {
     this.mock.mockImplementation(
       this.getImpl({
         error: (typeof error === "string" ? Error(error) : error) as Err,
-        snapshot
+        options
       })
     );
     return this;
+  }
+
+  /**
+   * Used to chain multiple function mock cretions
+   *
+   * @readonly
+   * @type {AwsServiceMockBuilder<S>}
+   * @memberof AwsFunctionMockBuilder
+   */
+  public get and(): AwsServiceMockBuilder<S> {
+    return this.serviceMockBuilder;
   }
 }
 
@@ -254,6 +290,23 @@ export class AwsServiceMockBuilder<S extends Service, O = any> {
   public service: ServiceConstructor<S, O>;
 
   /**
+   * If ServiceConstructor is a mockConstructor,
+   * this casts it into jest.Mock
+   *
+   * @type {jest.Mock<S, [O]>}
+   * @memberof AwsServiceMockBuilder
+   */
+  public serviceMock: jest.Mock<S, [O]>;
+
+  /**
+   * Used to configure mock creation
+   *
+   * @type {CreateMockOptions}
+   * @memberof AwsServiceMockBuilder
+   */
+  public options?: CreateMockOptions;
+
+  /**
    * Creates an instance of AwsServiceMockBuilder.
    * called internally by the "on" function
 
@@ -268,13 +321,17 @@ export class AwsServiceMockBuilder<S extends Service, O = any> {
    */
   public constructor({
     serviceConstructor,
-    instance
+    instance,
+    options
   }: {
     serviceConstructor: ServiceConstructor<S, O>;
     instance: S;
+    options?: CreateMockOptions;
   }) {
     this.service = serviceConstructor;
     this.instance = instance;
+    this.serviceMock = (serviceConstructor as unknown) as jest.Mock<S, [O]>;
+    this.options = options;
   }
 
   /**
@@ -307,11 +364,7 @@ export class AwsServiceMockBuilder<S extends Service, O = any> {
         : inferFunc((jest.fn() as unknown) as S[F]);
     this.instance[func] = (mock as unknown) as S[F];
 
-    return new AwsFunctionMockBuilder<S, F, Err, Data, Input>(
-      this.instance,
-      func,
-      mock
-    );
+    return new AwsFunctionMockBuilder<S, F, Err, Data, Input>(this, func, mock);
   }
 }
 
@@ -380,7 +433,8 @@ export function infer<
  * ```
  */
 export function on<S extends Service, O = any>(
-  serviceOrConstructor: ServiceConstructor<S, O> | S
+  serviceOrConstructor: ServiceConstructor<S, O> | S,
+  options?: CreateMockOptions
 ): AwsServiceMockBuilder<S, O> {
   if (
     serviceOrConstructor instanceof Service ||
@@ -397,6 +451,7 @@ export function on<S extends Service, O = any>(
 
   return new AwsServiceMockBuilder({
     serviceConstructor: serviceOrConstructor,
-    instance: serviceOrConstructor.prototype as S
+    instance: serviceOrConstructor.prototype as S,
+    options
   });
 }

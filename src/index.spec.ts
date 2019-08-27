@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SecretsManager } from "aws-sdk";
 import { on, infer } from ".";
 
@@ -9,12 +10,15 @@ describe("aws-mock", () => {
       .mock("getSecretValue", infer)
       .resolve({ SecretString: "foo-bar" });
 
-    const res = new SecretsManager()
+    const res = new SecretsManager({
+      credentials: { accessKeyId: "rootkeyfoo" } as any
+    })
       .getSecretValue({ SecretId: "bar-baz" })
       .promise();
 
     await expect(res).resolves.toMatchSnapshot("Result");
     expect(m.mock).toHaveBeenCalledTimes(1);
+    expect(m.and.serviceMock.mock.calls[0]).toMatchSnapshot("Constructor");
   });
 
   it("Should create reject mock from type", async () => {
@@ -83,5 +87,30 @@ describe("aws-mock", () => {
 
     await expect(res).resolves.toMatchSnapshot("Result");
     expect(m.mock).toHaveBeenCalledTimes(1);
+  });
+
+  it("Should chain mocks", async () => {
+    const m = on(SecretsManager, { snapshot: false })
+      .mock("getSecretValue", infer)
+      .resolve(() => {
+        return {
+          SecretString: "FOO"
+        };
+      })
+      .and.mock("createSecret", infer)
+      .resolve({ Name: "FOO_SECRET" });
+
+    const smm = new SecretsManager();
+    smm.getSecretValue({ SecretId: "bar-baz" }).promise();
+
+    await expect(
+      smm.getSecretValue({ SecretId: "bar-baz" }).promise()
+    ).resolves.toMatchSnapshot("getSecretValue");
+
+    await expect(
+      smm.createSecret({ Name: "FOO", SecretString: "BAR" }).promise()
+    ).resolves.toMatchSnapshot("createSecret");
+
+    expect(m.serviceMockBuilder.serviceMock).toHaveBeenCalledTimes(1);
   });
 });
