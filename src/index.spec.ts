@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { SecretsManager } from "aws-sdk";
+import { SecretsManager, STS } from "aws-sdk";
 import { on, infer } from ".";
 
 jest.mock("aws-sdk");
@@ -7,7 +7,7 @@ jest.mock("aws-sdk");
 describe("aws-mock", () => {
   it("Should create resolve mock from type", async () => {
     const m = on(SecretsManager)
-      .mock("getSecretValue", infer)
+      .mock("getSecretValue")
       .resolve({ SecretString: "foo-bar" });
 
     const res = new SecretsManager({
@@ -23,7 +23,7 @@ describe("aws-mock", () => {
 
   it("Should create reject mock from type", async () => {
     const m = on(SecretsManager)
-      .mock("getSecretValue", infer)
+      .mock("getSecretValue")
       .reject("foo-baz");
 
     const res = new SecretsManager()
@@ -36,7 +36,7 @@ describe("aws-mock", () => {
 
   it("Should create resolve mock from instance", async () => {
     const m = on(new SecretsManager())
-      .mock("getSecretValue", infer)
+      .mock("getSecretValue")
       .resolve({ SecretString: "foo-bar" });
 
     const res = m.service.getSecretValue({ SecretId: "bar-baz" }).promise();
@@ -47,7 +47,7 @@ describe("aws-mock", () => {
 
   it("Should create reject mock from instance", async () => {
     const m = on(new SecretsManager())
-      .mock("getSecretValue", infer)
+      .mock("getSecretValue")
       .reject(Error("baz-BAR"));
 
     const res = m.service.getSecretValue({ SecretId: "bar-baz" }).promise();
@@ -58,7 +58,7 @@ describe("aws-mock", () => {
 
   it("Should not create snapshot", async () => {
     const m = on(SecretsManager)
-      .mock("getSecretValue", infer)
+      .mock("getSecretValue")
       .resolve({ SecretString: "foo-bar" }, { snapshot: false });
 
     const res = new SecretsManager()
@@ -71,7 +71,7 @@ describe("aws-mock", () => {
 
   it("Should invoke result callabck", async () => {
     const m = on(SecretsManager)
-      .mock("getSecretValue", infer)
+      .mock("getSecretValue")
       .resolve(
         () => {
           return {
@@ -91,13 +91,13 @@ describe("aws-mock", () => {
 
   it("Should chain mocks", async () => {
     const m = on(SecretsManager, { snapshot: false })
-      .mock("getSecretValue", infer)
+      .mock("getSecretValue")
       .resolve(() => {
         return {
           SecretString: "FOO"
         };
       })
-      .and.mock("createSecret", infer)
+      .and.mock("createSecret")
       .resolve({ Name: "FOO_SECRET" });
 
     const smm = new SecretsManager();
@@ -111,6 +111,11 @@ describe("aws-mock", () => {
       smm.createSecret({ Name: "FOO", SecretString: "BAR" }).promise()
     ).resolves.toMatchSnapshot("createSecret");
 
-    expect(m.serviceMockBuilder.serviceMock).toHaveBeenCalledTimes(1);
+    expect(m.serviceMock).toHaveBeenCalledTimes(1);
   });
+});
+
+describe("infer", () => {
+  const res = infer(STS.prototype.getCallerIdentity);
+  expect(res).toBe(STS.prototype.getCallerIdentity);
 });

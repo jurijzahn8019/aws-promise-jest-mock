@@ -11,5 +11,6 @@ __mocks__/
 .prettier*
 .travis*
 .versionrc*
+rollup.config*
 jest.config*
 tsconfig*
