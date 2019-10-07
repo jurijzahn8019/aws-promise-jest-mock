@@ -34,17 +34,13 @@ Array [
 
 exports[`aws-mock Should create resolve mock from instance: Result 1`] = `
 Object {
-  "SecretString": "foo-bar",
+  "Account": "foo",
+  "Arn": "arn:foo",
+  "UserId": "fooser",
 }
 `;
 
-exports[`aws-mock Should create resolve mock from instance: secretsmanager.getSecretValue (resolve mock 3b67f997b83b065e32ad7fb2b0a969e8d1dd7a2b) 1`] = `
-Array [
-  Object {
-    "SecretId": "bar-baz",
-  },
-]
-`;
+exports[`aws-mock Should create resolve mock from instance: sts.getCallerIdentity (resolve mock 97d170e1550eee4afc0af065b78cda302a97674c) 1`] = `Array []`;
 
 exports[`aws-mock Should create resolve mock from type: Constructor 1`] = `
 Array [

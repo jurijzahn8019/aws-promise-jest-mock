@@ -35,11 +35,11 @@ describe("aws-mock", () => {
   });
 
   it("Should create resolve mock from instance", async () => {
-    const m = on(new SecretsManager())
-      .mock("getSecretValue")
-      .resolve({ SecretString: "foo-bar" });
+    const m = on(new STS())
+      .mock("getCallerIdentity")
+      .resolve({ Account: "foo", Arn: "arn:foo", UserId: "fooser" });
 
-    const res = m.service.getSecretValue({ SecretId: "bar-baz" }).promise();
+    const res = m.service.getCallerIdentity().promise();
 
     await expect(res).resolves.toMatchSnapshot("Result");
     expect(m.mock).toHaveBeenCalledTimes(1);

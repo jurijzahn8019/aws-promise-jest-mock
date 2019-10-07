@@ -54,22 +54,18 @@ export function on<S extends Service, C extends ServiceConstructor<S>>(
   serviceOrConstructor: ServiceConstructor<S> | S,
   options?: MockOptions
 ): AwsServiceMockBuilder<S, C> {
-  if (
-    serviceOrConstructor instanceof Service ||
+  return serviceOrConstructor instanceof Service ||
     (serviceOrConstructor as any).name !== "mockConstructor"
-  ) {
-    return new AwsServiceMockBuilder<S, C>(
-      serviceOrConstructor.constructor as ServiceConstructor<S>,
-      serviceOrConstructor as InstanceType<C>,
-      options
-    );
-  }
-
-  return new AwsServiceMockBuilder<S, C>(
-    serviceOrConstructor,
-    serviceOrConstructor.prototype as InstanceType<C>,
-    options
-  );
+    ? new AwsServiceMockBuilder<S, C>(
+        serviceOrConstructor.constructor as ServiceConstructor<S>,
+        serviceOrConstructor as InstanceType<C>,
+        options
+      )
+    : new AwsServiceMockBuilder<S, C>(
+        serviceOrConstructor,
+        serviceOrConstructor.prototype as InstanceType<C>,
+        options
+      );
 }
 
 export * from "./FunctionMockBuilder";
