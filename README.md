@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/jurijzahn8019/aws-promise-jest-mock/badge.svg?branch=master)](https://coveralls.io/github/jurijzahn8019/aws-promise-jest-mock?branch=master)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=jurijzahn8019/aws-promise-jest-mock)](https://dependabot.com)
 [![GitHub](https://img.shields.io/github/license/jurijzahn8019/aws-promise-jest-mock)](LICENSE)
-![npm](https://img.shields.io/npm/v/aws-promise-jest-mock)
+![npm](https://img.shields.io/npm/v/@jurijzahn8019/aws-promise-jest-mock)
 ![Vulnerabilities](https://snyk.io/test/github/jurijzahn8019/aws-promise-jest-mock/badge.svg)
 
 simple libraray for jest-tested projects to create jest mock for js aws-sdk .promise() calls
@@ -16,21 +16,24 @@ i was tired to copy-paste my mock helpers across repos
 ## install
 
 ```bash
-npm i -D aws-promise-jest-mock
+npm i -D @jurijzahn8019/aws-promise-jest-mock
 ```
 
 ## usage
 
-```typescript
-// code file
+in your code file
 
+```typescript
 export function foo() {
   return new SecretsManager().getSecretValue({ SecretId: "bar-baz" }).promise();
 }
+```
 
-// spec file
+in your spec file
+
+```typescript
 import { SecretsManager } from "aws-sdk";
-import { on, infer } from "aws-promise-jest-mock";
+import { on } from "@jurijzahn8019/aws-promise-jest-mock";
 import { foo } from "./code.ts";
 
 jest.mock("aws-sdk");
@@ -38,7 +41,8 @@ jest.mock("aws-sdk");
 describe("aws-mock", () => {
   it("Should succeed", async () => {
     const m = on(SecretsManager)
-      .mock("getSecretValue", infer)
+      .mock("getSecretValue")
+      // Result type will be inferred by typescript
       .resolve({ SecretString: "foo-bar" });
 
     const res = foo();
@@ -49,7 +53,7 @@ describe("aws-mock", () => {
 
   it("Should fail", async () => {
     const m = on(SecretsManager)
-      .mock("getSecretValue", infer)
+      .mock("getSecretValue")
       .reject("foo-baz");
 
     const res = foo();
