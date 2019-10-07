@@ -12,7 +12,6 @@
     "coveralls": "cat ./tmp/coverage/lcov.info | coveralls",
     "lint": "eslint src/**/*.ts",
     "packlocal": "npm run clean && npm run build && npm pack && mkdir -p ./tmp && mv -f aws-promise-jest-mock-*.tgz ./tmp/ && tar xfz ./tmp/aws-promise-jest-mock-*.tgz -C ./tmp",
-    "postinstall": "echo '\\033[41mTHIS Package is Deprecated, use  jurijzahn8019/aws-promise-jest-mock\\033[0m'",
     "pub": "npm run clean && npm run build && npm publish",
     "release": "standard-version",
     "test": "jest"
