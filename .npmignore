@@ -1,6 +1,7 @@
 .dependabot/
 .vscode/
 
+tmp/
 __snapshots__/
 __mocks__/
 */__fixtures__/
