@@ -7,7 +7,7 @@ import {
   FunctionMock,
   ServiceFunction
 } from "./types";
-import { AwsFunctionMockBuilder } from "./FunctionMockBuilder";
+import { AwsFunctionMockBuilder } from "./AwsFunctionMockBuilder";
 
 /**
  * Encapsulates Service Mock build Process

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Service, HttpRequest } from "aws-sdk";
 import { Readable } from "stream";
-import { createHash } from "crypto";
+
 import {
   ServiceMock,
   ServiceMockBuilder,
@@ -10,20 +10,20 @@ import {
   FunctionMock,
   MockOptions,
   MockResult,
-  MockResultFunc
+  MockResultFunc,
+  FunctionMockImpl
 } from "./types";
+import { hash } from "./utils";
 
 /**
  * Encapsulates the function mock process
  *
- * @template S type of the AWS Service
- * @template F identifier of the Service Function to mock
- * @template Err Error thrown by the function
- * @template Data Data returned by the function
- * @template Input Input passed to the function
- */
-/**
- *
+ * @template S Type of the AWS Service to mock
+ * @template C Type of the constructor function of the AWS Service
+ * @template F Names of the service function which has to be mocked
+ * @template E Type of the error thrown by the service function
+ * @template N Type of the service function inferred by the given function name
+ * @template B Type of the service mock builder which created this function builder instance
  */
 export class AwsFunctionMockBuilder<
   S extends Service,
@@ -56,7 +56,7 @@ export class AwsFunctionMockBuilder<
 
   /**
    * Get service mock from corresponding builder instance
-   * Shortcut for serviceMock.serviceMockBuilder.serviceMock
+   * Shortcut for this.serviceMockBuilder.serviceMock
    */
   public get serviceMock(): ServiceMock<S> {
     return this.serviceMockBuilder.serviceMock;
@@ -100,15 +100,15 @@ export class AwsFunctionMockBuilder<
 
   /**
    * Used by the builder internally
+   *
    * @param {
    *     result,
    *     error,
    *     options = {}
    *   }
-   * @returns impl
+   * @returns service function mock implementation
    */
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  private getImpl({
+  private getMockImpl({
     result,
     error,
     options = {}
@@ -116,7 +116,7 @@ export class AwsFunctionMockBuilder<
     result?: MockResult<S, C, F, E, N> | MockResultFunc<S, C, F, E, N>;
     error?: E;
     options?: MockOptions;
-  } & MockOptions) {
+  } & MockOptions): FunctionMockImpl<S, C, F, E> {
     const { snapshot = true } = { ...this.options, ...options };
     const res = {
       promise: jest.fn(),
@@ -137,7 +137,7 @@ export class AwsFunctionMockBuilder<
           `${(this.service.constructor as any).serviceIdentifier ||
             /* istanbul ignore next */ "Mock"}.${this.func} (${
             error ? "reject" : "resolve"
-          } mock ${AwsFunctionMockBuilder.hash(args, "sha1")})`
+          } mock ${hash(args, "sha1")})`
         );
       }
 
@@ -154,22 +154,6 @@ export class AwsFunctionMockBuilder<
   }
 
   /**
-   * Used internally by the mock builder to sha1 the argument list
-   *
-   * @param data
-   * @param [algorithm] hash algorythm to use, defaults to sha256
-   * @returns hash of the data value
-   */
-  private static hash<T>(
-    data: T,
-    /* istanbul ignore next */ algorithm = "sha256"
-  ): string {
-    const hasher = createHash(algorithm);
-    const res = hasher.update(JSON.stringify(data)).digest("hex");
-    return res;
-  }
-
-  /**
    * Creates resolving mock which returns given result
    *
    * @param result Data to return by the mock
@@ -181,7 +165,7 @@ export class AwsFunctionMockBuilder<
     result: MockResult<S, C, F, E, N> | MockResultFunc<S, C, F, E, N>,
     options?: MockOptions
   ): this {
-    this.mock.mockImplementation(this.getImpl({ result, options }));
+    this.mock.mockImplementation(this.getMockImpl({ result, options }));
     return this;
   }
 
@@ -195,7 +179,7 @@ export class AwsFunctionMockBuilder<
    */
   public reject(err: E | Error | string, options?: MockOptions): this {
     const error = (typeof err === "string" ? Error(err) : err) as E;
-    this.mock.mockImplementation(this.getImpl({ error, options }));
+    this.mock.mockImplementation(this.getMockImpl({ error, options }));
     return this;
   }
 

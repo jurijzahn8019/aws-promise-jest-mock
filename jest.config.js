@@ -29,6 +29,7 @@ module.exports = {
   // An array of regexp pattern strings used to skip coverage collection
   coveragePathIgnorePatterns: [
     "node_modules",
+    "__fixtures__",
     ".*\\.i?spec\\.(t|j)sx?$",
     "src/test/.*"
   ],

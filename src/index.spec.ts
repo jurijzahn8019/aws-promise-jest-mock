@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { SecretsManager, STS } from "aws-sdk";
-import { on, infer } from ".";
+import { on } from ".";
 
 jest.mock("aws-sdk");
 
@@ -113,9 +113,4 @@ describe("aws-mock", () => {
 
     expect(m.serviceMock).toHaveBeenCalledTimes(1);
   });
-});
-
-describe("infer", () => {
-  const res = infer(STS.prototype.getCallerIdentity);
-  expect(res).toBe(STS.prototype.getCallerIdentity);
 });
