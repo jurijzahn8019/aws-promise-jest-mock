@@ -6,6 +6,9 @@
 [![GitHub](https://img.shields.io/github/license/jurijzahn8019/aws-promise-jest-mock)](LICENSE)
 ![npm](https://img.shields.io/npm/v/@jurijzahn8019/aws-promise-jest-mock)
 ![Vulnerabilities](https://snyk.io/test/github/jurijzahn8019/aws-promise-jest-mock/badge.svg)
+![David](https://img.shields.io/david/dev/jurijzahn8019/aws-promise-jest-mock)
+![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@jurijzahn8019/aws-promise-jest-mock)
+![GitHub last commit](https://img.shields.io/github/last-commit/jurijzahn8019/aws-promise-jest-mock)
 
 simple libraray for jest-tested projects to create jest mock for js aws-sdk .promise() calls
 
