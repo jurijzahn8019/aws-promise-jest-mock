@@ -11,7 +11,7 @@
     "clean": "rm -rf tmp/* dist/*",
     "coveralls": "cat ./tmp/coverage/lcov.info | coveralls",
     "lint": "eslint src/**/*.ts",
-    "packlocal": "npm run clean && npm run build && npm pack && mkdir -p ./tmp && mv -f aws-promise-jest-mock-*.tgz ./tmp/ && tar xfz ./tmp/aws-promise-jest-mock-*.tgz -C ./tmp",
+    "packlocal": "export P=jurijzahn8019-aws; npm run clean && npm run build && npm pack && mkdir -p ./tmp && mv -f $P-*.tgz ./tmp/ && tar xfz ./tmp/$P-*.tgz -C ./tmp",
     "pub": "npm run clean && npm run build && npm publish",
     "release": "standard-version",
     "test": "jest"
