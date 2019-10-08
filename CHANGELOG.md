@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/jurijzahn8019/aws-promise-jest-mock/compare/v1.1.3...v2.0.0) (2019-10-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **mock:** infer is not used anymore, meed to remove from specs
+* **mock:** package name will change to include scope @jurijzahn8019
+
+### 🎉 Features
+
+* **mock:** rewrite and optimize module ([ad46f5f](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/ad46f5f))
+* **package:** add docs, export utils ([3e21c4c](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/3e21c4c))
+
+
+### 🐛 Bug Fixes
+
+* **package:** remove deprecation notice ([158e56c](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/158e56c))
+
+
+### 📝 Documentation
+
+* **readme:** update readme ([5d1a8e1](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/5d1a8e1))
+
+
+### 🛠 Chore
+
+* **publish:** add tmp to npmignoe ([ee8fb5e](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/ee8fb5e))
+
 ### [1.1.3](https://github.com/jurijzahn8019/aws-promise-jest-mock/compare/v1.1.2...v1.1.3) (2019-10-07)
 
 
