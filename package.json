@@ -61,7 +61,7 @@
     "git-branch": "^2.0.1",
     "husky": "^3.0.9",
     "jest": "^24.9.0",
-    "jest-junit": "^8.0.0",
+    "jest-junit": "^9.0.0",
     "prettier": "^1.18.2",
     "rollup": "^1.25.1",
     "rollup-plugin-typescript2": "^0.24.2",
