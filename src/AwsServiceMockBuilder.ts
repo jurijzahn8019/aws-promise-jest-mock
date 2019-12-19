@@ -15,8 +15,8 @@ import { AwsFunctionMockBuilder } from "./AwsFunctionMockBuilder";
  * @template C Type of the AWS Service Constructor function
  */
 export class AwsServiceMockBuilder<
-  S extends Service,
-  C extends ServiceConstructor<S>
+  S extends object = Service,
+  C extends ServiceConstructor<S> = ServiceConstructor<S>
 > {
   /**
    * Service Instance or Service Prototype function
@@ -78,6 +78,7 @@ export class AwsServiceMockBuilder<
     const mock: FunctionMock<S, C, F, E> = (sf !== undefined
       ? jest.spyOn(this.instance, func as any).mockReturnValue(undefined as any)
       : jest.fn()) as FunctionMock<S, C, F, E>;
+
     this.instance[func] = (mock as unknown) as InstanceType<C>[F];
 
     const res = new AwsFunctionMockBuilder<

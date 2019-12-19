@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { SecretsManager, STS } from "aws-sdk";
+import { SecretsManager, STS, DynamoDB } from "aws-sdk";
 import { on } from ".";
 
 jest.mock("aws-sdk");
@@ -101,7 +101,6 @@ describe("aws-mock", () => {
       .resolve({ Name: "FOO_SECRET" });
 
     const smm = new SecretsManager();
-    smm.getSecretValue({ SecretId: "bar-baz" }).promise();
 
     await expect(
       smm.getSecretValue({ SecretId: "bar-baz" }).promise()
@@ -110,6 +109,18 @@ describe("aws-mock", () => {
     await expect(
       smm.createSecret({ Name: "FOO", SecretString: "BAR" }).promise()
     ).resolves.toMatchSnapshot("createSecret");
+
+    expect(m.serviceMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("Should work with DocumentClient", async () => {
+    const m = on(DynamoDB.DocumentClient)
+      .mock("scan")
+      .resolve({ Items: [] });
+
+    await expect(
+      new DynamoDB.DocumentClient().scan({ TableName: "foo" }).promise()
+    ).resolves.toMatchSnapshot("scan");
 
     expect(m.serviceMock).toHaveBeenCalledTimes(1);
   });

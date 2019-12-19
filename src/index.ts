@@ -35,22 +35,29 @@ import { ServiceConstructor, MockOptions } from "./types";
  *
  * ```
  */
-export function on<S extends Service, C extends ServiceConstructor<S>>(
+export function on<
+  S extends object = Service,
+  C extends ServiceConstructor<S> = ServiceConstructor<S>
+>(
   serviceOrConstructor: ServiceConstructor<S> | S,
   options?: MockOptions
 ): AwsServiceMockBuilder<S, C> {
-  return serviceOrConstructor instanceof Service ||
-    serviceOrConstructor.name !== "mockConstructor"
-    ? new AwsServiceMockBuilder<S, C>(
-        serviceOrConstructor.constructor as ServiceConstructor<S>,
-        serviceOrConstructor as InstanceType<C>,
-        options
-      )
-    : new AwsServiceMockBuilder<S, C>(
-        serviceOrConstructor,
-        serviceOrConstructor.prototype as InstanceType<C>,
-        options
-      );
+  const sc = serviceOrConstructor as any;
+
+  // eslint-disable-next-line no-underscore-dangle
+  if (sc instanceof Service || sc._isMockFunction !== true) {
+    return new AwsServiceMockBuilder<S, C>(
+      sc.constructor as ServiceConstructor<S>,
+      sc as InstanceType<C>,
+      options
+    );
+  }
+
+  return new AwsServiceMockBuilder<S, C>(
+    sc,
+    sc.prototype as InstanceType<C>,
+    options
+  );
 }
 
 export * from "./AwsFunctionMockBuilder";

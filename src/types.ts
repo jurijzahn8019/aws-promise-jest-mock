@@ -32,7 +32,7 @@ export interface MockOptions {
  *
  * @template S Type of the AWS Service to mock
  */
-export interface ServiceConstructor<S extends Service> {
+export interface ServiceConstructor<S extends object = Service> {
   new (options?: any): S; // TODO: TS 3.7 ConstructorParameters<ServiceConstructor<S>>): S;
 }
 
@@ -41,7 +41,7 @@ export interface ServiceConstructor<S extends Service> {
  *
  * @template S Type of the AWS Service to mock
  */
-export interface ServiceMockBuilder<S extends Service> {
+export interface ServiceMockBuilder<S extends object = Service> {
   serviceMock: ServiceMock<S>;
   instance: S;
   options?: MockOptions;
@@ -52,7 +52,7 @@ export interface ServiceMockBuilder<S extends Service> {
  *
  * @template S Type of the AWS Service to mock
  */
-export type ServiceOptions<S extends Service> = ConstructorParameters<
+export type ServiceOptions<S extends object = Service> = ConstructorParameters<
   ServiceConstructor<S>
 >;
 
@@ -61,7 +61,10 @@ export type ServiceOptions<S extends Service> = ConstructorParameters<
  *
  * @template S Type of the AWS Service to mock
  */
-export type ServiceMock<S extends Service> = jest.Mock<S, ServiceOptions<S>>;
+export type ServiceMock<S extends object = Service> = jest.Mock<
+  S,
+  ServiceOptions<S>
+>;
 
 /**
  * Describes a Service Function in AWS Sdk
@@ -72,10 +75,10 @@ export type ServiceMock<S extends Service> = jest.Mock<S, ServiceOptions<S>>;
  * @template E Type of the error thrown by the service function
  */
 export type ServiceFunction<
-  S extends Service,
-  C extends ServiceConstructor<S>,
-  F extends keyof InstanceType<C>,
-  E extends Error
+  S extends object = Service,
+  C extends ServiceConstructor<S> = ServiceConstructor<S>,
+  F extends keyof InstanceType<C> = keyof InstanceType<C>,
+  E extends Error = Error
 > = InstanceType<C>[F] & {
   promise(): Promise<PromiseResult<any, E>>;
 };
@@ -89,10 +92,10 @@ export type ServiceFunction<
  * @template E Type of the error thrown by the service function
  */
 export type FunctionMock<
-  S extends Service,
-  C extends ServiceConstructor<S>,
-  F extends keyof InstanceType<C>,
-  E extends Error
+  S extends object = Service,
+  C extends ServiceConstructor<S> = ServiceConstructor<S>,
+  F extends keyof InstanceType<C> = keyof InstanceType<C>,
+  E extends Error = Error
 > = jest.Mock<
   Result<ServiceFunction<S, C, F, E>>,
   Input<ServiceFunction<S, C, F, E>>
@@ -107,10 +110,10 @@ export type FunctionMock<
  * @template E Type of the error thrown by the service function
  */
 export type FunctionMockImpl<
-  S extends Service,
-  C extends ServiceConstructor<S>,
-  F extends keyof InstanceType<C>,
-  E extends Error
+  S extends object = Service,
+  C extends ServiceConstructor<S> = ServiceConstructor<S>,
+  F extends keyof InstanceType<C> = keyof InstanceType<C>,
+  E extends Error = Error
 > = (
   ...args: Input<ServiceFunction<S, C, F, E>>
 ) => Result<ServiceFunction<S, C, F, E>>;
@@ -125,11 +128,11 @@ export type FunctionMockImpl<
  * @template N Type of the service function inferred by the given function name
  */
 export type InferredResult<
-  S extends Service,
-  C extends ServiceConstructor<S>,
-  F extends keyof InstanceType<C>,
-  E extends Error,
-  N extends ServiceFunction<S, C, F, E>
+  S extends object = Service,
+  C extends ServiceConstructor<S> = ServiceConstructor<S>,
+  F extends keyof InstanceType<C> = keyof InstanceType<C>,
+  E extends Error = Error,
+  N extends ServiceFunction<S, C, F, E> = ServiceFunction<S, C, F, E>
 > = Input<Input<Result<Result<N>["promise"]>["then"]>[0]>[0];
 
 /**
@@ -142,11 +145,11 @@ export type InferredResult<
  * @template N Type of the service function inferred by the given function name
  */
 export type MockResult<
-  S extends Service,
-  C extends ServiceConstructor<S>,
-  F extends keyof InstanceType<C>,
-  E extends Error,
-  N extends ServiceFunction<S, C, F, E>
+  S extends object = Service,
+  C extends ServiceConstructor<S> = ServiceConstructor<S>,
+  F extends keyof InstanceType<C> = keyof InstanceType<C>,
+  E extends Error = Error,
+  N extends ServiceFunction<S, C, F, E> = ServiceFunction<S, C, F, E>
 > = Partial<InferredResult<S, C, F, E, N>>;
 
 /**
@@ -160,11 +163,11 @@ export type MockResult<
  * @template N Type of the service function inferred by the given function name
  */
 export type MockResultFunc<
-  S extends Service,
-  C extends ServiceConstructor<S>,
-  F extends keyof InstanceType<C>,
-  E extends Error,
-  N extends ServiceFunction<S, C, F, E>
+  S extends object = Service,
+  C extends ServiceConstructor<S> = ServiceConstructor<S>,
+  F extends keyof InstanceType<C> = keyof InstanceType<C>,
+  E extends Error = Error,
+  N extends ServiceFunction<S, C, F, E> = ServiceFunction<S, C, F, E>
 > = {
   (...args: Input<ServiceFunction<S, C, F, E>>): MockResult<S, C, F, E, N>;
 };

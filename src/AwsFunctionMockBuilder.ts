@@ -26,12 +26,12 @@ import { hash } from "./utils";
  * @template B Type of the service mock builder which created this function builder instance
  */
 export class AwsFunctionMockBuilder<
-  S extends Service,
-  C extends ServiceConstructor<S>,
-  F extends keyof InstanceType<C>,
-  E extends Error,
-  N extends ServiceFunction<S, C, F, E>,
-  B extends ServiceMockBuilder<S>
+  S extends object = Service,
+  C extends ServiceConstructor<S> = ServiceConstructor<S>,
+  F extends keyof InstanceType<C> = keyof InstanceType<C>,
+  E extends Error = Error,
+  N extends ServiceFunction<S, C, F, E> = ServiceFunction<S, C, F, E>,
+  B extends ServiceMockBuilder<S> = ServiceMockBuilder<S>
 > {
   /**
    * Function Mock Instance

@@ -77,3 +77,17 @@ Object {
   "SecretString": "foo-bar",
 }
 `;
+
+exports[`aws-mock Should work with DocumentClient: Mock.scan (resolve mock 23274b4ac5364f74c390e2801289132b7b7e0948) 1`] = `
+Array [
+  Object {
+    "TableName": "foo",
+  },
+]
+`;
+
+exports[`aws-mock Should work with DocumentClient: scan 1`] = `
+Object {
+  "Items": Array [],
+}
+`;
