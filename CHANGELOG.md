@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/jurijzahn8019/aws-promise-jest-mock/compare/v2.1.0...v2.1.1) (2020-02-21)
+
+
+### 🛠 Chore
+
+* **deps:** bump deps ([9738c2d](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/9738c2dfed15a3fa02b0e11968874a678b76aba8))
+* **deps-dev:** bump dependencies ([297c813](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/297c81371030cf9f7434572bd6d5022f9eef1e9e))
+
 ## [2.1.0](https://github.com/jurijzahn8019/aws-promise-jest-mock/compare/v2.0.0...v2.1.0) (2019-12-19)
 
 
