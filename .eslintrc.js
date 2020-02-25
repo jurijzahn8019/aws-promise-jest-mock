@@ -7,12 +7,12 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "prettier/@typescript-eslint"
   ],
-  "settings": {
+  settings: {
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx"]
     },
     "import/resolver": {
-      "typescript": {}
+      typescript: {}
     }
   },
   overrides: [
@@ -25,14 +25,28 @@ module.exports = {
     {
       files: ["*.ts"],
       rules: {
+        "import/extensions": [
+          "error",
+          "ignorePackages",
+          {
+            ts: "never",
+            tsx: "never",
+            js: "never",
+            jsx: "never",
+            mjs: "never"
+          }
+        ],
         // ? This conflicts with 'import/no-named-as-default'
         "import/prefer-default-export": "off",
         // ? Do not apply rule to arrow functions without name
-        "@typescript-eslint/explicit-function-return-type": ["warn", { "allowExpressions": true }],
+        "@typescript-eslint/explicit-function-return-type": [
+          "warn",
+          { allowExpressions: true }
+        ],
         "no-nested-ternary": "off",
         "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": "off",
-        "@typescript-eslint/no-parameter-properties": "off",
+        "@typescript-eslint/no-parameter-properties": "off"
       }
     }
   ]

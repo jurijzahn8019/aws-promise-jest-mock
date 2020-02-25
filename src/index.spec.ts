@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { SecretsManager, STS, DynamoDB } from "aws-sdk";
-import { on } from ".";
+import { on } from "./index";
 
 jest.mock("aws-sdk");
 
