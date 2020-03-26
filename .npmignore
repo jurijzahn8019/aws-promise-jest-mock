@@ -1,5 +1,6 @@
 .dependabot/
 .vscode/
+.github/
 
 tmp/
 __snapshots__/
