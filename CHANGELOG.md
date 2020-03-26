@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.2](https://github.com/jurijzahn8019/aws-promise-jest-mock/compare/v2.1.1...v2.1.2) (2020-03-26)
+
+
+### 📝 Documentation
+
+* **readme:** fix links ([2e85845](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/2e85845351198f1f550b81c1655ffd515ad340f1))
+
+
+### 🐛 Bug Fixes
+
+* **lint:** update linter rules ([0fb961e](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/0fb961ed598798101ac0e455221856527754434a))
+
+
+### 🛠 Chore
+
+* **ci:** migrate from travis to github actions ([#158](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/158)) ([d511c2b](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/d511c2b7edada731ff02a72c824ec8bcda75b1e7))
+
 ### [2.1.1](https://github.com/jurijzahn8019/aws-promise-jest-mock/compare/v2.1.0...v2.1.1) (2020-02-21)
 
 
