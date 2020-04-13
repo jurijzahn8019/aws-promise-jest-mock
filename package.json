@@ -52,7 +52,7 @@
     "@commitlint/cli": "^8.3.5",
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
-    "@rollup/plugin-typescript": "4.0.0",
+    "@rollup/plugin-typescript": "4.1.1",
     "@types/jest": "^25.2.1",
     "@types/node": "^13.9.5",
     "@typescript-eslint/eslint-plugin": "^2.26.0",
