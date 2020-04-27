@@ -72,7 +72,7 @@
     "jest-junit": "^10.0.0",
     "prettier": "^2.0.4",
     "rollup": "^2.7.2",
-    "rollup-plugin-exclude-dependencies-from-bundle": "^1.1.8",
+    "rollup-plugin-exclude-dependencies-from-bundle": "^1.1.9",
     "standard-version": "^7.1.0",
     "ts-jest": "^25.4.0",
     "ts-node": "^8.8.2",
