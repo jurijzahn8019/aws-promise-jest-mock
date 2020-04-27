@@ -70,7 +70,7 @@
     "husky": "^4.2.5",
     "jest": "^25.4.0",
     "jest-junit": "^10.0.0",
-    "prettier": "^2.0.4",
+    "prettier": "^2.0.5",
     "rollup": "^2.7.2",
     "rollup-plugin-exclude-dependencies-from-bundle": "^1.1.9",
     "standard-version": "^7.1.0",
