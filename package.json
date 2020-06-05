@@ -19,6 +19,7 @@
     "pub": "npm run clean && npm run build && npm publish",
     "prerel": "standard-version --skip.changelog -p $(git branch --show-current | sed 's/master/rc/g' | sed 's/[_\\/]/-/g')",
     "release": "standard-version",
+    "push:tags": "git push --follow-tags origin master",
     "test": "jest"
   },
   "keywords": [

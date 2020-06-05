@@ -2,7 +2,7 @@ name: Publish Package
 
 on:
   release:
-    types: [created]
+    types: [published]
 
 jobs:
   build:
@@ -72,10 +72,10 @@ jobs:
         if: "github.event.release.prerelease"
         run: npm publish  --access public --tag next
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.TOKEN_GITHUB}}
 
       - name: Publish Release
         if: "!github.event.release.prerelease"
         run: npm pub --access public
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.TOKEN_GITHUB}}
