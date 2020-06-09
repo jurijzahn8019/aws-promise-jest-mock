@@ -23,7 +23,7 @@ jobs:
   automerge:
     runs-on: ubuntu-latest
     steps:
-      - uses: jurijzahn8019/action-dependabot-labels@v0.0.2
+      - uses: jurijzahn8019/action-dependabot-labels@v0.0.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
