@@ -30,4 +30,3 @@ updates:
       - "dependabot :dart:"
       - "bulldozer merge"
       - "bulldozer update"
-    versioning-strategy: increase
