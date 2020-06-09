@@ -6,7 +6,23 @@ updates:
       interval: daily
       time: "07:00"
       timezone: "Europe/Berlin"
-    open-pull-requests-limit: 99
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    labels:
+      - "dependabot :dart:"
+      - "bulldozer merge"
+      - "bulldozer update"
+    versioning-strategy: increase
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: daily
+      time: "07:00"
+      timezone: "Europe/Berlin"
+    open-pull-requests-limit: 10
     commit-message:
       prefix: "chore"
       include: "scope"
