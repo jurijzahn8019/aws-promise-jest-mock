@@ -23,16 +23,12 @@ jobs:
   automerge:
     runs-on: ubuntu-latest
     steps:
-      - uses: jurijzahn8019/action-dependabot-labels@v0.0.4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - uses: "pascalgn/automerge-action@v0.8.4"
+      - uses: "pascalgn/automerge-action@v0.8.2"
         env:
           GITHUB_TOKEN: "${{ secrets.TOKEN_GITHUB }}"
-          MERGE_LABELS: "bulldozer merge,!major"
+          MERGE_LABELS: "pull: automerge"
           MERGE_METHOD: squash
           MERGE_COMMIT_MESSAGE: pull-request-title-and-description
           MERGE_DELETE_BRANCH: true
-          UPDATE_LABELS: "bulldozer update"
+          UPDATE_LABELS: "pull: autoupdate"
           UPDATE_METHOD: rebase
