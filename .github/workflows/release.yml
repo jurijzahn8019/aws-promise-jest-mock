@@ -15,7 +15,7 @@ jobs:
         env:
           CONTEXT_GITHUB: ${{ toJson(github) }}
         run: |
-          # if [[ ${{ github. }} ]]
+          # if [[ ]]
           echo $CONTEXT_GITHUB
           echo "::set-env name=IS_RELEASE:true"
 
