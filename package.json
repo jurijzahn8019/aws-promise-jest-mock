@@ -72,7 +72,7 @@
     "prettier": "^2.0.5",
     "rollup": "^2.17.0",
     "rollup-plugin-exclude-dependencies-from-bundle": "^1.1.9",
-    "standard-version": "^8.0.0",
+    "standard-version": "^8.0.1",
     "ts-jest": "^26.1.0",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.5"
