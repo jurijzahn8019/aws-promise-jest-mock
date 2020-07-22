@@ -20,4 +20,4 @@ jobs:
         env:
           DEBUG: "action-dependabot-labels:*"
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.TOKEN_GITHUB }}
