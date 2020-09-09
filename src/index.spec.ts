@@ -11,7 +11,7 @@ describe("aws-mock", () => {
       .resolve({ SecretString: "foo-bar" });
 
     const res = new SecretsManager({
-      credentials: { accessKeyId: "rootkeyfoo" } as any
+      credentials: { accessKeyId: "rootkeyfoo" } as any,
     })
       .getSecretValue({ SecretId: "bar-baz" })
       .promise();
@@ -22,9 +22,7 @@ describe("aws-mock", () => {
   });
 
   it("Should create reject mock from type", async () => {
-    const m = on(SecretsManager)
-      .mock("getSecretValue")
-      .reject("foo-baz");
+    const m = on(SecretsManager).mock("getSecretValue").reject("foo-baz");
 
     const res = new SecretsManager()
       .getSecretValue({ SecretId: "bar-baz" })
@@ -75,7 +73,7 @@ describe("aws-mock", () => {
       .resolve(
         () => {
           return {
-            SecretString: "FOO"
+            SecretString: "FOO",
           };
         },
         { snapshot: false }
@@ -94,7 +92,7 @@ describe("aws-mock", () => {
       .mock("getSecretValue")
       .resolve(() => {
         return {
-          SecretString: "FOO"
+          SecretString: "FOO",
         };
       })
       .and.mock("createSecret")
@@ -113,10 +111,41 @@ describe("aws-mock", () => {
     expect(m.serviceMock).toHaveBeenCalledTimes(1);
   });
 
+  it("Should chain calls", async () => {
+    const m = on(SecretsManager, { snapshot: false })
+      .mock("getSecretValue")
+      .resolveOnce(() => {
+        return {
+          SecretString: "FOO",
+        };
+      })
+      .resolveOnce({ SecretString: "FOO_SECRET" })
+      .rejectOnce("Third Call");
+
+    const smm = new SecretsManager();
+
+    await expect(
+      smm.getSecretValue({ SecretId: "bar-baz" }).promise()
+    ).resolves.toMatchSnapshot("getSecretValue 1");
+
+    await expect(
+      smm.getSecretValue({ SecretId: "FOO" }).promise()
+    ).resolves.toMatchSnapshot("getSecretValue 2");
+
+    await expect(
+      smm.getSecretValue({ SecretId: "NONE" }).promise()
+    ).rejects.toMatchSnapshot("Rejection Mock");
+
+    expect(
+      smm.getSecretValue({ SecretId: "this will return nothing" })
+    ).toBeUndefined();
+
+    expect(m.serviceMock).toHaveBeenCalledTimes(1);
+    expect(m.mock).toHaveBeenCalledTimes(4);
+  });
+
   it("Should work with DocumentClient", async () => {
-    const m = on(DynamoDB.DocumentClient)
-      .mock("scan")
-      .resolve({ Items: [] });
+    const m = on(DynamoDB.DocumentClient).mock("scan").resolve({ Items: [] });
 
     await expect(
       new DynamoDB.DocumentClient().scan({ TableName: "foo" }).promise()

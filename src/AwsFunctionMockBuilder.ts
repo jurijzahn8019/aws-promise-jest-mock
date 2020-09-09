@@ -11,7 +11,7 @@ import {
   MockOptions,
   MockResult,
   MockResultFunc,
-  FunctionMockImpl
+  FunctionMockImpl,
 } from "./types";
 import { hash } from "./utils";
 
@@ -111,7 +111,7 @@ export class AwsFunctionMockBuilder<
   private getMockImpl({
     result,
     error,
-    options = {}
+    options = {},
   }: {
     result?: MockResult<S, C, F, E, N> | MockResultFunc<S, C, F, E, N>;
     error?: E;
@@ -128,16 +128,19 @@ export class AwsFunctionMockBuilder<
       on: jest.fn(),
       onAsync: jest.fn(),
       startTime: new Date("2019"),
-      httpRequest: (jest.fn() as unknown) as HttpRequest
+      httpRequest: (jest.fn() as unknown) as HttpRequest,
     };
 
     return (...args: any) => {
       if (snapshot) {
         expect(args).toMatchSnapshot(
-          `${(this.service.constructor as any).serviceIdentifier ||
-            /* istanbul ignore next */ "Mock"}.${this.func} (${
-            error ? "reject" : "resolve"
-          } mock ${hash(args, "sha1")})`
+          `${
+            (this.service.constructor as any).serviceIdentifier ||
+            /* istanbul ignore next */ "Mock"
+          }.${this.func} (${error ? "reject" : "resolve"} mock ${hash(
+            args,
+            "sha1"
+          )})`
         );
       }
 
@@ -153,11 +156,25 @@ export class AwsFunctionMockBuilder<
     };
   }
 
+  public getMockMethod(
+    options?: MockOptions
+  ): (impl: FunctionMockImpl<S, C, F, E>) => FunctionMock<S, C, F, E> {
+    const methods = {
+      once: (i: FunctionMockImpl<S, C, F, E>) =>
+        this.mock.mockImplementationOnce(i),
+      always: (i: FunctionMockImpl<S, C, F, E>) =>
+        this.mock.mockImplementation(i),
+    };
+    const method: keyof typeof methods = options?.once ? "once" : "always";
+
+    return methods[method];
+  }
+
   /**
    * Creates resolving mock which returns given result
    *
    * @param result Data to return by the mock
-   * @param [options] used to override options defined on the builder instance
+   * @param options used to override options defined on the builder instance
    * @returns
 
    */
@@ -165,8 +182,22 @@ export class AwsFunctionMockBuilder<
     result: MockResult<S, C, F, E, N> | MockResultFunc<S, C, F, E, N>,
     options?: MockOptions
   ): this {
-    this.mock.mockImplementation(this.getMockImpl({ result, options }));
+    this.getMockMethod(options)(this.getMockImpl({ result, options }));
     return this;
+  }
+
+  /**
+   * Creates resolving mock which returns given result "once"
+   * this uses mockImplementationOnce
+   *
+   * @param result Data to return by the mock
+   * @param options used to override options defined on the builder instance
+   */
+  public resolveOnce(
+    result: MockResult<S, C, F, E, N> | MockResultFunc<S, C, F, E, N>,
+    options?: MockOptions
+  ): this {
+    return this.resolve(result, { ...options, once: true });
   }
 
   /**
@@ -179,8 +210,21 @@ export class AwsFunctionMockBuilder<
    */
   public reject(err: E | Error | string, options?: MockOptions): this {
     const error = (typeof err === "string" ? Error(err) : err) as E;
-    this.mock.mockImplementation(this.getMockImpl({ error, options }));
+    this.getMockMethod(options)(this.getMockImpl({ error, options }));
     return this;
+  }
+
+  /**
+   * Creates rejecting mock which throws given error "once"
+   * this uses mockImplementationOnce
+   *
+   * @param err error to throw
+   * @param [options] used to override options defined on the builder instance
+   * @returns
+
+   */
+  public rejectOnce(err: E | Error | string, options?: MockOptions): this {
+    return this.reject(err, { ...options, once: true });
   }
 
   /**

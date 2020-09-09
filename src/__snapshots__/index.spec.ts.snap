@@ -1,5 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`aws-mock Should chain calls: Rejection Mock 1`] = `[Error: Third Call]`;
+
+exports[`aws-mock Should chain calls: getSecretValue 1 1`] = `
+Object {
+  "SecretString": "FOO",
+}
+`;
+
+exports[`aws-mock Should chain calls: getSecretValue 2 1`] = `
+Object {
+  "SecretString": "FOO_SECRET",
+}
+`;
+
 exports[`aws-mock Should chain mocks: createSecret 1`] = `
 Object {
   "Name": "FOO_SECRET",
