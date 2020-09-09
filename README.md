@@ -44,7 +44,6 @@ describe("aws-mock", () => {
   it("Should succeed", async () => {
     const m = on(SecretsManager)
       .mock("getSecretValue")
-      // Result type will be inferred by typescript
       .resolve({ SecretString: "foo-bar" });
 
     const res = foo();
@@ -54,14 +53,40 @@ describe("aws-mock", () => {
   });
 
   it("Should fail", async () => {
-    const m = on(SecretsManager)
-      .mock("getSecretValue")
-      .reject("foo-baz");
+    const m = on(SecretsManager).mock("getSecretValue").reject("foo-baz");
 
     const res = foo();
 
     await expect(res).rejects.toMatchSnapshot("Result");
     expect(m.mock).toHaveBeenCalledTimes(1);
+  });
+});
+```
+
+chain mocks
+
+```typescript
+import { SecretsManager } from "aws-sdk";
+import { on } from "@jurijzahn8019/aws-promise-jest-mock";
+import { foo } from "./code.ts";
+
+jest.mock("aws-sdk");
+
+describe("aws-mock", () => {
+  it("Should succeed", async () => {
+    const m = on(SecretsManager)
+      .mock("getSecretValue")
+      .resolveOnce({ SecretString: "foo-bar" })
+      .resolveOnce({ SecretString: "baz-bar" })
+      .rejectOnce({ SecretString: "baz-bar" });
+
+    const res = foo();
+
+    await expect(res).resolves.toMatchSnapshot("Result 1");
+    await expect(res).resolves.toMatchSnapshot("Result 2");
+    await expect(res).rejects.toMatchSnapshot("Error");
+
+    expect(m.mock).toHaveBeenCalledTimes(3);
   });
 });
 ```

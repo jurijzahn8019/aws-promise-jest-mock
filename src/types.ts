@@ -25,6 +25,12 @@ export interface MockOptions {
    * @default true
    */
   snapshot?: boolean;
+
+  /**
+   * If set to true, will use mockImplementationOnce instead of mockImplementation
+   * This allows to chain multiple results for a same function
+   */
+  once?: boolean;
 }
 
 /**
@@ -33,7 +39,7 @@ export interface MockOptions {
  * @template S Type of the AWS Service to mock
  */
 export interface ServiceConstructor<S extends object = Service> {
-  new (options?: any): S; // TODO: TS 3.7 ConstructorParameters<ServiceConstructor<S>>): S;
+  new (options?: any): S; // TODO: ConstructorParameters<ServiceConstructor<S>>): S;
 }
 
 /**
