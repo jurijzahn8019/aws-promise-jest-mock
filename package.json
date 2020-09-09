@@ -46,35 +46,35 @@
   "homepage": "https://github.com/jurijzahn8019/aws-promise-jest-mock#readme",
   "peerDependencies": {
     "aws-sdk": "^2.x.x",
-    "jest": "^25.x.x"
+    "jest": "^26.x.x"
   },
   "devDependencies": {
     "@commitlint/cli": "^9.1.2",
-    "@rollup/plugin-commonjs": "^14.0.0",
-    "@rollup/plugin-node-resolve": "^8.4.0",
-    "@rollup/plugin-typescript": "4.1.2",
+    "@rollup/plugin-commonjs": "^15.0.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@rollup/plugin-typescript": "6.0.0",
     "@types/jest": "^26.0.13",
     "@types/node": "^14.6.4",
-    "@typescript-eslint/eslint-plugin": "^2.31.0",
-    "@typescript-eslint/parser": "^2.31.0",
-    "aws-sdk": "^2.748.0",
+    "@typescript-eslint/eslint-plugin": "^4.1.0",
+    "@typescript-eslint/parser": "^4.1.0",
+    "aws-sdk": "^2.749.0",
     "eslint": "^7.8.1",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-import-resolver-typescript": "^2.3.0",
     "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jest": "^23.20.0",
+    "eslint-plugin-jest": "^24.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "git-branch": "^2.0.1",
     "husky": "^4.3.0",
     "jest": "^26.4.2",
-    "jest-junit": "^10.0.0",
+    "jest-junit": "^11.1.0",
     "prettier": "^2.1.1",
     "rollup": "^2.26.11",
     "rollup-plugin-exclude-dependencies-from-bundle": "^1.1.12",
-    "standard-version": "^8.0.2",
+    "standard-version": "^9.0.0",
     "ts-jest": "^26.3.0",
-    "ts-node": "^8.10.2",
-    "typescript": "^3.9.7"
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
   }
 }
