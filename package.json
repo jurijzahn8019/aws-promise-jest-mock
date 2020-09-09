@@ -74,7 +74,7 @@
     "rollup-plugin-exclude-dependencies-from-bundle": "^1.1.12",
     "standard-version": "^8.0.2",
     "ts-jest": "^26.3.0",
-    "ts-node": "^8.10.2",
+    "ts-node": "^9.0.0",
     "typescript": "^3.9.7"
   }
 }
