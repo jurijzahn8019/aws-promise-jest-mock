@@ -59,7 +59,7 @@
     "@typescript-eslint/parser": "^4.6.1",
     "aws-sdk": "^2.786.0",
     "eslint": "^7.13.0",
-    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^6.15.0",
     "eslint-import-resolver-typescript": "^2.3.0",
     "eslint-plugin-import": "^2.22.1",
