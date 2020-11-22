@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Service, HttpRequest } from "aws-sdk";
-import { Readable } from "stream";
+import { Service, HttpRequest, Request } from "aws-sdk";
 
 import {
   ServiceMock,
@@ -118,17 +117,28 @@ export class AwsFunctionMockBuilder<
     options?: MockOptions;
   } & MockOptions): FunctionMockImpl<S, C, F, E> {
     const { snapshot = true } = { ...this.options, ...options };
-    const res = {
+    const httpRequest = new HttpRequest(
+      this.service.endpoint || "",
+      this.service.config?.region || ""
+    );
+    httpRequest.headers = {};
+    const request: jest.Mocked<Request<any, E>> = {
       promise: jest.fn(),
       abort: jest.fn(),
-      createReadStream: jest.fn() as jest.Mock<Readable>,
+      createReadStream: jest.fn(),
       eachPage: jest.fn(),
-      isPageable: jest.fn().mockReturnValue(false) as jest.Mock<boolean>,
+      isPageable: jest.fn().mockReturnValue(false),
       send: jest.fn(),
-      on: jest.fn(),
+      on: jest
+        .fn()
+        .mockImplementation((_event: string, listener: () => void) => {
+          if (listener) {
+            listener();
+          }
+        }),
       onAsync: jest.fn(),
       startTime: new Date("2019"),
-      httpRequest: (jest.fn() as unknown) as HttpRequest,
+      httpRequest,
     };
 
     return (...args: any) => {
@@ -145,14 +155,14 @@ export class AwsFunctionMockBuilder<
       }
 
       if (error) {
-        res.promise.mockRejectedValue(error);
+        request.promise.mockRejectedValue(error);
       } else {
-        res.promise.mockResolvedValue(
+        request.promise.mockResolvedValue(
           AwsFunctionMockBuilder.isFunc(result) ? result(...args) : result
         );
       }
 
-      return res as any;
+      return request as any;
     };
   }
 
