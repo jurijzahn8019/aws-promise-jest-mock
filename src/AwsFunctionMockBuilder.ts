@@ -118,8 +118,8 @@ export class AwsFunctionMockBuilder<
   } & MockOptions): FunctionMockImpl<S, C, F, E> {
     const { snapshot = true } = { ...this.options, ...options };
     const httpRequest = new HttpRequest(
-      this.service.endpoint || "",
-      this.service.config?.region || ""
+      (this.service as Service).endpoint || "",
+      (this.service as Service).config?.region || ""
     );
     httpRequest.headers = {};
     const request: jest.Mocked<Request<any, E>> = {
