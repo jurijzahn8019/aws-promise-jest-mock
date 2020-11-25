@@ -107,7 +107,7 @@ export class AwsFunctionMockBuilder<
    *   }
    * @returns service function mock implementation
    */
-  private getMockImpl({
+  protected getMockImpl({
     result,
     error,
     options = {},
