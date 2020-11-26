@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Service, HttpRequest, Request } from "aws-sdk";
 
@@ -93,7 +94,7 @@ export class AwsFunctionMockBuilder<
    * @param value a function candidate
    * @returns a boolean value indication whether value is a function
    */
-  private static isFunc(value: any): value is Function {
+  private static isFunc(value: any): value is (...args: any[]) => any {
     return typeof value === "function";
   }
 

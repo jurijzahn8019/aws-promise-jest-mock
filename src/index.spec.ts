@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { SecretsManager, STS, DynamoDB } from "aws-sdk";
+import { SecretsManager, STS, DynamoDB, HttpRequest, Endpoint } from "aws-sdk";
 import { on } from "./index";
 
 jest.mock("aws-sdk");
@@ -152,5 +152,46 @@ describe("aws-mock", () => {
     ).resolves.toMatchSnapshot("scan");
 
     expect(m.serviceMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("Should call HttpRequest with options", () => {
+    const b = on(SecretsManager);
+    b.instance.endpoint = ("https://foo.baz.bar" as unknown) as Endpoint;
+    b.instance.config = { region: "foo-bar-1" } as typeof b.instance["config"];
+    b.mock("getSecretValue").resolve({ SecretString: "foo-bar" });
+
+    expect(HttpRequest).toHaveBeenCalledWith(
+      "https://foo.baz.bar",
+      "foo-bar-1"
+    );
+  });
+
+  it("Should invoke listener", async () => {
+    const m = on(SecretsManager)
+      .mock("getSecretValue")
+      .resolve({ SecretString: "foo-bar" }, { snapshot: false });
+
+    const cb = jest.fn();
+
+    const res = new SecretsManager()
+      .getSecretValue({ SecretId: "bar-baz" })
+      .on("validate", cb);
+
+    expect(res).toBe(undefined);
+    expect(m.mock).toHaveBeenCalledTimes(1);
+    expect(cb).toHaveBeenCalledTimes(1);
+  });
+
+  it("Should skip if listener not provided", async () => {
+    const m = on(SecretsManager)
+      .mock("getSecretValue")
+      .resolve({ SecretString: "foo-bar" }, { snapshot: false });
+
+    const req = new SecretsManager({ region: "foo" }).getSecretValue({
+      SecretId: "bar-baz",
+    });
+
+    expect(m.mock).toHaveBeenCalledTimes(1);
+    expect(() => req.on("validate", undefined as any)).not.toThrow();
   });
 });

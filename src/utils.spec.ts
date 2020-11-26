@@ -10,7 +10,7 @@ describe("utils", () => {
       mock.mockImplementation((a, b) => {
         return {
           a: `a: ${a}`,
-          b: 100 + b
+          b: 100 + b,
         };
       });
       expect(mock).toBe(sut);
