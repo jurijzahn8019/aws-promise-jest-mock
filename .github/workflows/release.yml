@@ -14,24 +14,28 @@ jobs:
       - name: Check Tag
         run: |
           if [[ $GITHUB_REF =~ ^refs\/tags\/v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then 
-            echo "::debug::This is a Release"; 
-            echo "::set-env name=IS_RELEASE::true"
+            echo "::debug::This is a Release"
+            echo "IS_RELEASE=true" >> $GITHUB_ENV
           else 
             echo "::debug::This is a Pre-Release"; 
-            echo "::set-env name=IS_RELEASE::false"
+            echo "IS_RELEASE=false" >> $GITHUB_ENV
           fi;
 
-      - if: env.IS_RELEASE == 'false'
-        name: Prerelease
+      - name: Prerelease
         uses: meeDamian/github-release@2.0
+
+        if: env.IS_RELEASE == 'false'
+
         with:
           token: ${{ secrets.TOKEN_GITHUB }}
           allow_override: true
           prerelease: true
 
-      - if: env.IS_RELEASE == 'true'
-        name: Release
+      - name: Release
         uses: meeDamian/github-release@2.0
+
+        if: env.IS_RELEASE == 'true'
+
         with:
           token: ${{ secrets.TOKEN_GITHUB }}
           allow_override: true
