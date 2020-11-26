@@ -18,5 +18,5 @@ export default {
       dependencies: true,
     }),
   ],
-  external: ["aws-sdk"],
+  external: ["aws-sdk", "crypto"],
 };
