@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Service, AWSError } from "aws-sdk";
 import {
@@ -5,7 +6,7 @@ import {
   MockOptions,
   ServiceMock,
   FunctionMock,
-  ServiceFunction
+  ServiceFunction,
 } from "./types";
 import { AwsFunctionMockBuilder } from "./AwsFunctionMockBuilder";
 
