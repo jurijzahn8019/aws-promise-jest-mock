@@ -1,6 +1,6 @@
 name: "Ensure Semantic PR"
 on:
-  pull_request:
+  pull_request_target:
     types:
       - opened
       - edited
