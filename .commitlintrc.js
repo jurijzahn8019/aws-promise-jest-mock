@@ -2,7 +2,7 @@ const branch = require("git-branch").sync();
 
 // export empty
 module.exports =
-  branch === "master"
+  branch === "main"
     ? {
       rules: {
         "body-leading-blank": [2, "always"],

@@ -3,10 +3,10 @@ name: Build and Test Code
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -41,7 +41,7 @@ jobs:
           CI: true
 
       - name: Upload coverage
-        uses: coverallsapp/github-action@master
+        uses: coverallsapp/github-action@v1.1.2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: ./tmp/coverage/lcov.info

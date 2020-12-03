@@ -1,13 +1,13 @@
 # aws-promise-jest-mock
 
-[![Build Status](https://travis-ci.org/jurijzahn8019/aws-promise-jest-mock.svg?branch=master)](https://travis-ci.org/jurijzahn8019/aws-promise-jest-mock)
-[![Coverage Status](https://coveralls.io/repos/github/jurijzahn8019/aws-promise-jest-mock/badge.svg?branch=master)](https://coveralls.io/github/jurijzahn8019/aws-promise-jest-mock?branch=master)
+[![Build Status](https://travis-ci.org/jurijzahn8019/aws-promise-jest-mock.svg?branch=main)](https://travis-ci.org/jurijzahn8019/aws-promise-jest-mock)
+[![Coverage Status](https://coveralls.io/repos/github/jurijzahn8019/aws-promise-jest-mock/badge.svg?branch=main)](https://coveralls.io/github/jurijzahn8019/aws-promise-jest-mock?branch=main)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=jurijzahn8019/aws-promise-jest-mock)](https://app.dependabot.com/accounts/jurijzahn8019/repos/204479322)
 [![GitHub](https://img.shields.io/github/license/jurijzahn8019/aws-promise-jest-mock)](LICENSE)
 [![npm](https://img.shields.io/npm/v/@jurijzahn8019/aws-promise-jest-mock)](https://www.npmjs.com/package/@jurijzahn8019/aws-promise-jest-mock)
 [![Vulnerabilities](https://snyk.io/test/github/jurijzahn8019/aws-promise-jest-mock/badge.svg)](https://snyk.io/test/github/jurijzahn8019/aws-promise-jest-mock)
 [![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@jurijzahn8019/aws-promise-jest-mock)](https://bundlephobia.com/result?p=@jurijzahn8019/aws-promise-jest-mock)
-[![GitHub last commit](https://img.shields.io/github/last-commit/jurijzahn8019/aws-promise-jest-mock)](https://github.com/jurijzahn8019/aws-promise-jest-mock/commits/master)
+[![GitHub last commit](https://img.shields.io/github/last-commit/jurijzahn8019/aws-promise-jest-mock)](https://github.com/jurijzahn8019/aws-promise-jest-mock/commits/main)
 
 simple libraray for jest-tested projects to create jest mock for js aws-sdk .promise() calls
 

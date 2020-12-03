@@ -16,9 +16,9 @@
     "lint": "eslint src/**/*.ts",
     "packlocal": "export P=jurijzahn8019-aws; rm -rf ./tmp/package && npm pack && mkdir -p ./tmp && mv -f $P-*.tgz ./tmp/ && tar xfz ./tmp/$P-*.tgz -C ./tmp",
     "pub": "npm run clean && npm run build && npm publish",
-    "prerel": "standard-version --skip.changelog -p $(git branch --show-current | sed 's/master/rc/g' | sed 's/[_\\/]/-/g')",
+    "prerel": "standard-version --skip.changelog -p $(git branch --show-current | sed 's/main/rc/g' | sed 's/[_\\/]/-/g')",
     "release": "standard-version",
-    "push:tags": "git push --follow-tags origin master",
+    "push:tags": "git push --follow-tags origin main",
     "test": "jest"
   },
   "keywords": [
