@@ -1,0 +1,81 @@
+# These settings are synced to GitHub by https://github.com/probot/settings#readme
+repository:
+  default_branch: main
+  allow_squash_merge: true
+  allow_merge_commit: false
+  allow_rebase_merge: true
+
+labels:
+  # Default Labels (From Org)
+  - name: "bug"
+    description: "Something isn't working"
+    color: "d73a4a"
+  - name: "enhancement"
+    description: "New feature or request"
+    color: "a2eeef"
+  - name: "duplicate"
+    description: "This issue or pull request already exists"
+    color: "cfd3d7"
+  - name: "documentation"
+    description: "Improvements or additions to documentation"
+    color: "0075ca"
+  - name: "good first issue"
+    description: "Good for newcomers"
+    color: "7057ff"
+  - name: "help wanted"
+    description: "Extra attention is needed"
+    color: "008672"
+  - name: "invalid"
+    description: "This doesn't seem right"
+    color: "e4e669"
+  - name: "question"
+    description: "Further information is requested"
+    color: "d876e3"
+  - name: "security"
+    description: "Pull requests that address a security vulnerability"
+    color: "ee0701"
+  - name: "wontfix"
+    description: "This will not be worked on"
+    color: "ffffff"
+
+  - name: "dependabot :dart:"
+    description: "Pull request is automated dependency update"
+    color: "a0ea83"
+  - name: "dependency: patch"
+    color: "365BB0"
+    description: "minor version dependency update"
+  - name: "dependency: minor"
+    color: "365BB0"
+    description: "minor version dependency update"
+  - name: "dependency: major"
+    color: "0D3184"
+    description: "minor version dependency update"
+
+  - name: "pull: update"
+    description: "Keep pull request updated to the target"
+    color: "143FA1"
+  - name: "pull: automerge"
+    description: "Merge the PR once all checks are OK"
+    color: "3458AA"
+  - name: "pull: not update"
+    description: "Not keep pull request updated to the target"
+    color: "525252"
+  - name: "pull: not merge"
+    description: "Not merge the PR once all checks are OK"
+    color: "#7C7C7C"
+
+branches:
+  - name: main
+    protection:
+      required_pull_request_reviews: null
+      required_status_checks:
+        strict: true
+        contexts: 
+          - Semantic PR
+          - Analyze (javascript)
+          - build (10.x)
+          - build (12.x)
+          - coverage/coveralls
+      enforce_admins: false
+      required_linear_history: true
+      restrictions: null
