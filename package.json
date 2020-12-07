@@ -1,6 +1,6 @@
 {
   "name": "@jurijzahn8019/aws-promise-jest-mock",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "private": false,
   "description": "simple libraray for jest-tested projects to create jest mock for js aws-sdk  .promise() calls",
   "main": "dist/index.cjs.js",
