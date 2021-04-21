@@ -15,9 +15,17 @@ on:
     - cron: '0 19 * * 5'
 
 jobs:
+  no-analyze: 
+    name: Analyze (javascript)
+    runs-on: ubuntu-latest
+    if: ${{ startsWith(github.event.pull_request.user.login, 'dependabot') }}
+    steps:
+      - run: echo "skip analyzer"
+    
   analyze:
     name: Analyze
     runs-on: ubuntu-latest
+    if: ${{ !startsWith(github.event.pull_request.user.login, 'dependabot') }}
 
     strategy:
       fail-fast: false
