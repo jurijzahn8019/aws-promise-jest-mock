@@ -26,14 +26,14 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Add Pull Request Label
-        uses: actions-ecosystem/action-add-labels@v1
+        uses: actions-ecosystem/action-add-labels@v1.1.2
         if: steps.checker.outputs.diff != 'major'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           labels: "pull: automerge"
 
       - name: Add Pull Request Label for Version Diff
-        uses: actions-ecosystem/action-add-labels@v1
+        uses: actions-ecosystem/action-add-labels@v1.1.2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           labels: "dependency: ${{ steps.checker.outputs.diff }}"
