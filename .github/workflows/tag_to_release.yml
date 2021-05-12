@@ -22,7 +22,7 @@ jobs:
           fi;
 
       - name: Prerelease
-        uses: meeDamian/github-release@2.0
+        uses: meeDamian/github-release@v2.0.3
 
         if: env.IS_RELEASE == 'false'
 
@@ -32,7 +32,7 @@ jobs:
           prerelease: true
 
       - name: Release
-        uses: meeDamian/github-release@2.0
+        uses: meeDamian/github-release@v2.0.3
 
         if: env.IS_RELEASE == 'true'
 
