@@ -46,7 +46,7 @@
     "jest": ">= 26 < 28"
   },
   "devDependencies": {
-    "@commitlint/cli": "^12.1.4",
+    "@commitlint/cli": "^13.1.0",
     "@rollup/plugin-commonjs": "^19.0.2",
     "@rollup/plugin-node-resolve": "^13.0.4",
     "@rollup/plugin-typescript": "8.2.5",
