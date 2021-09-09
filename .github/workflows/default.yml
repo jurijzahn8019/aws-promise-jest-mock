@@ -34,6 +34,7 @@ jobs:
         run: npm run lint
 
       - name: Build Sources
+        timeout-minutes: 2
         run: npm run build --if-present
       - name: Execute Tests
         run: npm run test
