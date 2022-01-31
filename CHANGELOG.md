@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.30](https://github.com/jurijzahn8019/aws-promise-jest-mock/compare/v2.4.29...v2.4.30) (2022-01-31)
+
+
+### 🛠 Chore
+
+* **deps-dev:** bump aws-sdk from 2.1062.0 to 2.1063.0 ([c29ab02](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/c29ab02453610dc1805863388a052b06c5f1fab8))
+* **deps-dev:** bump aws-sdk from 2.1063.0 to 2.1064.0 ([3cc8670](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/3cc867015dcc40b9f2023c5a6649f1904e121cca))
+* **deps-dev:** bump aws-sdk from 2.1064.0 to 2.1065.0 ([67b63c2](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/67b63c2118b67d0e1ddeab9e520853d25f53a2a9))
+* **deps-dev:** bump aws-sdk from 2.1065.0 to 2.1066.0 ([32f5562](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/32f5562acdd2d5c04d63c77078aae9f7219ceb15))
+* **deps-dev:** bump rollup from 2.66.0 to 2.66.1 ([1b2cf58](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/1b2cf58fc0674ad2e24477e8b0cceeed50e6da8b)), closes [#4363](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4363) [#4364](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4364) [#4362](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4362) [#4363](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4363) [#4364](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4364) [#4363](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4363) [#4364](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4364) [#4362](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4362) [#4363](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4363) [#4364](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4364) [#4364](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4364) [#4362](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4362) [#4363](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4363)
+* **deps:** bump jurijzahn8019/action-dependabot-bump-range from 0.0.61 to 0.0.62 ([bec289f](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/bec289f7ea9f4ee334a532be119e20bfc789d783))
+
 ### [2.4.29](https://github.com/jurijzahn8019/aws-promise-jest-mock/compare/v2.4.28...v2.4.29) (2022-01-24)
 
 
