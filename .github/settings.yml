@@ -73,8 +73,7 @@ branches:
         contexts: 
           - Semantic PR
           - Analyze (javascript)
-          - build (10.x)
-          - build (12.x)
+          - build (16.x)
           - coverage/coveralls
       enforce_admins: false
       required_linear_history: true
