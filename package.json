@@ -7,7 +7,8 @@
   "module": "dist/index.es6.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "npm run clean && for S in rollup types; do npm run build:$S; done",
+    "build": "(for S in clean rollup types; do npm run build:$S; [ $? -ne 0 ] && exit 1; done; exit 0;)",
+    "build:clean": "npm run clean",
     "build:rollup": "rollup -c",
     "build:types": "tsc -p tsconfig.prod.json -d --outDir ./dist --emitDeclarationOnly",
     "build:tsc": "tsc --noEmit",
@@ -71,6 +72,7 @@
     "standard-version": "^9.3.2",
     "ts-jest": "^27.1.3",
     "ts-node": "^10.5.0",
+    "tslib": "^2.3.1",
     "typescript": "4.5.5"
   }
 }
