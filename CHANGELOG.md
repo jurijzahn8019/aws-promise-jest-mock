@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.33](https://github.com/jurijzahn8019/aws-promise-jest-mock/compare/v2.4.32...v2.4.33) (2022-02-15)
+
+
+### 🛠 Chore
+
+* **deps-dev:** bump @types/node from 17.0.17 to 17.0.18 ([1848b62](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/1848b62784e1f3512a8ae6568fc389b705c76753))
+* **deps-dev:** bump @typescript-eslint/eslint-plugin from 5.11.0 to 5.12.0 ([1ccd237](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/1ccd2372ff0bea21012ff0f4925a9941db814cd0)), closes [#4544](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4544) [#4543](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4543) [#4548](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4548) [#4542](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4542) [#4544](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4544) [#4543](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4543) [#4548](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4548) [#4542](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4542) [#4544](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4544) [#4548](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4548) [#4542](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4542)
+* **deps-dev:** bump @typescript-eslint/parser from 5.11.0 to 5.12.0 ([be411cf](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/be411cfcba318ffddbae8bc3b39d49ebe929e378))
+* **deps-dev:** bump aws-sdk from 2.1073.0 to 2.1074.0 ([3853605](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/3853605fc86d9b05e00824de67b6f71a3230b317)), closes [#4022](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4022)
+* **deps:** bump jurijzahn8019/action-dependabot-bump-range from 0.0.64 to 0.0.65 ([46921c8](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/46921c8834034c21153d74b305bf3cd4910f615c))
+* **package:** fix configuration ([1655ab4](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/1655ab48cf1af6c5bba994cd790b7d45adc5e8bf))
+
 ### [2.4.32](https://github.com/jurijzahn8019/aws-promise-jest-mock/compare/v2.4.31...v2.4.32) (2022-02-14)
 
 
