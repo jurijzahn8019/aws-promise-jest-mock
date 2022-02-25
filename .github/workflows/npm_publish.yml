@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.4.0
-      - uses: actions/setup-node@v2.5.1
+      - uses: actions/setup-node@v3.0.0
         with:
           node-version: 12
       - uses: actions/cache@v2.1.7
@@ -42,7 +42,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           path: ${{ github.workspace }}
-      - uses: actions/setup-node@v2.5.1
+      - uses: actions/setup-node@v3.0.0
         with:
           node-version: 12
       - uses: actions/cache@v2.1.7
@@ -58,7 +58,7 @@ jobs:
         timeout-minutes: 2
         run: npm run build
 
-      - uses: actions/setup-node@v2.5.1
+      - uses: actions/setup-node@v3.0.0
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
@@ -84,7 +84,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           path: ${{ github.workspace }}
-      - uses: actions/setup-node@v2.5.1
+      - uses: actions/setup-node@v3.0.0
         with:
           node-version: 12
       - uses: actions/cache@v2.1.7
@@ -99,7 +99,7 @@ jobs:
       - name: Build Sources
         run: npm run build
 
-      - uses: actions/setup-node@v2.5.1
+      - uses: actions/setup-node@v3.0.0
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
