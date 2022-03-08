@@ -67,7 +67,7 @@
     "husky": "^7.0.4",
     "jest": "^27.5.1",
     "prettier": "^2.5.1",
-    "rollup": "^2.69.2",
+    "rollup": "^2.70.0",
     "rollup-plugin-exclude-dependencies-from-bundle": "^1.1.22",
     "standard-version": "^9.3.2",
     "ts-jest": "^27.1.3",
