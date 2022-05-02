@@ -22,12 +22,12 @@ jobs:
       - run: npm test
 
       - name: Persist dist
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: dist
           path: ${{ github.workspace }}/dist
       - name: Persist tmp
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: tmp
           path: ${{ github.workspace }}/tmp
