@@ -148,7 +148,7 @@ export class AwsFunctionMockBuilder<
           `${
             (this.service.constructor as any).serviceIdentifier ||
             /* istanbul ignore next */ "Mock"
-          }.${this.func} (${error ? "reject" : "resolve"} mock ${hash(
+          }.${this.func as string} (${error ? "reject" : "resolve"} mock ${hash(
             args,
             "sha1"
           )})`
