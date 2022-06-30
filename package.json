@@ -65,7 +65,7 @@
     "eslint-plugin-prettier": "^4.1.0",
     "git-branch": "^2.0.1",
     "husky": "^8.0.1",
-    "jest": "^28.1.1",
+    "jest": "^28.1.2",
     "prettier": "^2.7.1",
     "rollup": "^2.75.7",
     "rollup-plugin-exclude-dependencies-from-bundle": "^1.1.22",
