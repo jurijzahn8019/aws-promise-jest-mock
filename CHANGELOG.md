@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.66](https://github.com/jurijzahn8019/aws-promise-jest-mock/compare/v2.4.65...v2.4.66) (2022-10-17)
+
+
+### 🛠 Chore
+
+* **deps-dev:** bump @types/node from 18.8.3 to 18.8.4 ([eb27740](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/eb277406ec5375b0015a7634efac5865fdc95578))
+* **deps-dev:** bump @types/node from 18.8.4 to 18.8.5 ([318e6f7](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/318e6f7e071aed148b0e8b0db53c9fe89ea04391))
+* **deps-dev:** bump @types/node from 18.8.5 to 18.11.0 ([043b530](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/043b530460fb0c156df8b39715af9647d1d3f33e))
+* **deps-dev:** bump @typescript-eslint/eslint-plugin from 5.39.0 to 5.40.0 ([4055296](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/40552965e86f0ce3378f032e90e02f9f347c2b3a)), closes [#5746](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/5746) [#5766](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/5766) [#4015](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4015) [#5750](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/5750) [#5769](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/5769) [#5746](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/5746) [#5766](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/5766) [#4015](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4015) [#5750](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/5750) [#5750](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/5750) [#5731](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/5731) [#5766](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/5766) [#5696](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/5696)
+* **deps-dev:** bump @typescript-eslint/parser from 5.39.0 to 5.40.0 ([576899d](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/576899d2703281ace8c29475b5fdb82b5abb93f3)), closes [#5746](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/5746) [#5766](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/5766) [#4015](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4015) [#5750](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/5750) [#5769](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/5769) [#5801](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/5801)
+* **deps-dev:** bump aws-sdk from 2.1231.0 to 2.1232.0 ([174bc52](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/174bc529d3f952e39da45abe36f6502ef3fcc666)), closes [#4229](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4229)
+* **deps-dev:** bump aws-sdk from 2.1232.0 to 2.1233.0 ([bcca730](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/bcca7304017a184f8afa793541c62cbc4bdf8e3c))
+* **deps:** bump jurijzahn8019/action-dependabot-bump-range from 0.0.98 to 0.0.99 ([c723e72](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/c723e72ee764986b2980a27e6ea29653543778a7))
+
 ### [2.4.65](https://github.com/jurijzahn8019/aws-promise-jest-mock/compare/v2.4.64...v2.4.65) (2022-10-10)
 
 
