@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.70](https://github.com/jurijzahn8019/aws-promise-jest-mock/compare/v2.4.69...v2.4.70) (2022-11-14)
+
+
+### 🛠 Chore
+
+* **deps-dev:** Bump @typescript-eslint/eslint-plugin from 5.42.0 to 5.42.1 ([4e92dc3](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/4e92dc3f2d6315ee328a65b623a8574b16e2f822))
+* **deps-dev:** Bump @typescript-eslint/parser from 5.42.0 to 5.42.1 ([f172e87](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/f172e8711d141908dc5605612700acec67c93306))
+* **deps-dev:** Bump aws-sdk from 2.1247.0 to 2.1248.0 ([3dbf963](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/3dbf963ffcdbe36020dd12c1fa3ef377effae7cb)), closes [#4263](https://github.com/jurijzahn8019/aws-promise-jest-mock/issues/4263)
+* **deps-dev:** Bump aws-sdk from 2.1248.0 to 2.1249.0 ([984cd97](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/984cd977e1110dbdd450b924961ea0fb1027d358))
+* **deps-dev:** Bump aws-sdk from 2.1249.0 to 2.1250.0 ([4af1aa5](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/4af1aa5b37b38828ea19c4a12a3d6e358b8c5f5e))
+* **deps-dev:** Bump aws-sdk from 2.1250.0 to 2.1251.0 ([c705778](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/c705778fdbb60c38d1901f0952a847d2e036fca8))
+* **deps-dev:** Bump aws-sdk from 2.1251.0 to 2.1252.0 ([4f36559](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/4f36559e382b80db9e27ee949bdab0b74510c481))
+* **deps-dev:** Bump aws-sdk from 2.1252.0 to 2.1253.0 ([cda4b46](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/cda4b464bd7ed83dbf1064fb54a3787ee783e159))
+* **deps-dev:** Bump husky from 8.0.1 to 8.0.2 ([d166671](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/d16667104fe2356b0e432eeba06c470125dc47a1))
+* **deps:** Bump jurijzahn8019/action-dependabot-bump-range from 0.0.102 to 0.0.103 ([acb5402](https://github.com/jurijzahn8019/aws-promise-jest-mock/commit/acb540263ebac6f6e704b4e5d6e4f2d197b22f77))
+
 ### [2.4.69](https://github.com/jurijzahn8019/aws-promise-jest-mock/compare/v2.4.68...v2.4.69) (2022-11-07)
 
 
