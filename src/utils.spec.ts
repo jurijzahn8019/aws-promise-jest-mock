@@ -15,7 +15,7 @@ describe("utils", () => {
       });
       expect(mock).toBe(sut);
       expect(sut("F", 20)).toMatchInlineSnapshot(`
-        Object {
+        {
           "a": "a: F",
           "b": 120,
         }

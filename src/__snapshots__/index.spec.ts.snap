@@ -3,25 +3,25 @@
 exports[`aws-mock Should chain calls: Rejection Mock 1`] = `[Error: Third Call]`;
 
 exports[`aws-mock Should chain calls: getSecretValue 1 1`] = `
-Object {
+{
   "SecretString": "FOO",
 }
 `;
 
 exports[`aws-mock Should chain calls: getSecretValue 2 1`] = `
-Object {
+{
   "SecretString": "FOO_SECRET",
 }
 `;
 
 exports[`aws-mock Should chain mocks: createSecret 1`] = `
-Object {
+{
   "Name": "FOO_SECRET",
 }
 `;
 
 exports[`aws-mock Should chain mocks: getSecretValue 1`] = `
-Object {
+{
   "SecretString": "FOO",
 }
 `;
@@ -29,8 +29,8 @@ Object {
 exports[`aws-mock Should create reject mock from instance: Result 1`] = `[Error: baz-BAR]`;
 
 exports[`aws-mock Should create reject mock from instance: secretsmanager.getSecretValue (reject mock 3b67f997b83b065e32ad7fb2b0a969e8d1dd7a2b) 1`] = `
-Array [
-  Object {
+[
+  {
     "SecretId": "bar-baz",
   },
 ]
@@ -39,27 +39,27 @@ Array [
 exports[`aws-mock Should create reject mock from type: Result 1`] = `[Error: foo-baz]`;
 
 exports[`aws-mock Should create reject mock from type: secretsmanager.getSecretValue (reject mock 3b67f997b83b065e32ad7fb2b0a969e8d1dd7a2b) 1`] = `
-Array [
-  Object {
+[
+  {
     "SecretId": "bar-baz",
   },
 ]
 `;
 
 exports[`aws-mock Should create resolve mock from instance: Result 1`] = `
-Object {
+{
   "Account": "foo",
   "Arn": "arn:foo",
   "UserId": "fooser",
 }
 `;
 
-exports[`aws-mock Should create resolve mock from instance: sts.getCallerIdentity (resolve mock 97d170e1550eee4afc0af065b78cda302a97674c) 1`] = `Array []`;
+exports[`aws-mock Should create resolve mock from instance: sts.getCallerIdentity (resolve mock 97d170e1550eee4afc0af065b78cda302a97674c) 1`] = `[]`;
 
 exports[`aws-mock Should create resolve mock from type: Constructor 1`] = `
-Array [
-  Object {
-    "credentials": Object {
+[
+  {
+    "credentials": {
       "accessKeyId": "rootkeyfoo",
     },
   },
@@ -67,41 +67,41 @@ Array [
 `;
 
 exports[`aws-mock Should create resolve mock from type: Result 1`] = `
-Object {
+{
   "SecretString": "foo-bar",
 }
 `;
 
 exports[`aws-mock Should create resolve mock from type: secretsmanager.getSecretValue (resolve mock 3b67f997b83b065e32ad7fb2b0a969e8d1dd7a2b) 1`] = `
-Array [
-  Object {
+[
+  {
     "SecretId": "bar-baz",
   },
 ]
 `;
 
 exports[`aws-mock Should invoke result callabck: Result 1`] = `
-Object {
+{
   "SecretString": "FOO",
 }
 `;
 
 exports[`aws-mock Should not create snapshot: Result 1`] = `
-Object {
+{
   "SecretString": "foo-bar",
 }
 `;
 
 exports[`aws-mock Should work with DocumentClient: Mock.scan (resolve mock 23274b4ac5364f74c390e2801289132b7b7e0948) 1`] = `
-Array [
-  Object {
+[
+  {
     "TableName": "foo",
   },
 ]
 `;
 
 exports[`aws-mock Should work with DocumentClient: scan 1`] = `
-Object {
-  "Items": Array [],
+{
+  "Items": [],
 }
 `;
