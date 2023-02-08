@@ -50,7 +50,7 @@
     "@commitlint/cli": "^17.4.2",
     "@rollup/plugin-typescript": "10.0.1",
     "@types/jest": "^29.4.0",
-    "@types/node": "^18.11.19",
+    "@types/node": "^18.13.0",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
     "aws-sdk": "^2.1310.0",
