@@ -65,7 +65,7 @@
     "husky": "^8.0.3",
     "jest": "^29.4.3",
     "prettier": "^2.8.4",
-    "rollup": "^3.17.3",
+    "rollup": "^3.18.0",
     "standard-version": "^9.5.0",
     "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
